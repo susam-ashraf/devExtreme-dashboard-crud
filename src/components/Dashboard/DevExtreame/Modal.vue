@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="open = true"
+    @click="toggleModal"
     type="button"
     class="mb-8 mt-8 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
   >
@@ -49,8 +49,8 @@
     </svg>
   </button>
 
-  <TransitionRoot as="template" :show="open">
-    <Dialog class="relative z-10" @close="open = false">
+  <TransitionRoot as="template" :show="modalStore.open">
+    <Dialog class="relative z-10" @close="toggleModal">
       <TransitionChild
         as="template"
         enter="ease-out duration-300"
@@ -88,7 +88,7 @@
                   </div>
                   <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <DialogTitle as="h3" class="text-base font-semibold text-gray-900"
-                      >New Attendance Record
+                      >{{ modalStore.isEdit ? "Edit" : "New" }} Attendance Record
                     </DialogTitle>
                     <div class="bg-red">
                       <DashboardDevExtreameFormLayout />
@@ -100,7 +100,7 @@
                 <button
                   type="button"
                   class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 shadow-xs ring-gray-300 ring-inset hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                  @click="open = false"
+                  @click="toggleModal"
                   ref="cancelButtonRef"
                 >
                   Cancel
@@ -115,9 +115,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from "@headlessui/vue";
 import { DocumentPlusIcon } from "@heroicons/vue/24/outline";
+import { useModalStore } from "@/stores/modal";
 
-const open = ref(false);
+const modalStore = useModalStore();
+
+function toggleModal() {
+  modalStore.toggleModal(!modalStore.open, false);
+}
 </script>

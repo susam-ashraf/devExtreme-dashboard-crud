@@ -97,7 +97,7 @@
               {{ order.ReturnWork }}
             </td>
             <td class="px-6 py-4">
-              <button type="button" class="">
+              <button @click="toggleModal" type="button" class="">
                 <svg
                   class="w-6 h-6 text-gray-800 dark:text-white"
                   aria-hidden="true"
@@ -132,6 +132,7 @@ import { reactive, computed, onMounted } from "vue";
 
 import { useTableDataStore } from "../../../stores/tableData.js";
 import type { EmployeeDataType } from "@/types/dataTypes.js";
+import { useModalStore } from "@/stores/modal.js";
 
 const store = useTableDataStore();
 
@@ -145,10 +146,10 @@ const filterTableData = computed(() => {
   let filtered: EmployeeDataType[] = state.tableData;
   if (state.search != "") {
     const search = state.search.toLowerCase();
+    // const searchName = state.searchName.toLowerCase();
     filtered = filtered.filter(
       (item: EmployeeDataType) =>
-        item.TypeReason.toLowerCase().includes(search) ||
-        item.EmployeeName.toLowerCase().includes(search)
+        item.ID.toString().includes(search) || item.EmployeeName.toLowerCase().includes(search)
     );
   }
   return filtered;
@@ -157,6 +158,12 @@ onMounted(() => {
   // You can perform any data fetching or initialization here
   state.tableData = store.orders as EmployeeDataType[];
 });
+
+const modalStore = useModalStore();
+
+function toggleModal() {
+  modalStore.toggleModal(!modalStore.open, true);
+}
 </script>
 
 <style scoped>

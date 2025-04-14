@@ -6,7 +6,7 @@ export const useTableDataStore = defineStore<"test", TableDataState, {}, ActionM
     message: "Hello from Pinia!",
     orders: [
       {
-        ID: 1,
+        ID: 1115346,
         EmployeeName: "Harv Mudd",
         TypeReason: "Vacation",
         Reason: "Summer Vacation",
@@ -16,8 +16,28 @@ export const useTableDataStore = defineStore<"test", TableDataState, {}, ActionM
         OfficeReEntry: "2025/04/13 9:00",
       },
       {
-        ID: 2,
+        ID: 1112566,
         EmployeeName: "Jim Packard",
+        TypeReason: "Sick Leave",
+        Reason: "Having bad Headache",
+        EntryWork: "2017/04/10",
+        ReturnWork: "2017/04/13 9:00",
+        OfficeOpening: "2025/04/13 9:00",
+        OfficeReEntry: "2025/04/13 9:00",
+      },
+      {
+        ID: 1142564,
+        EmployeeName: "Noman Khan",
+        TypeReason: "Sick Leave",
+        Reason: "Having bad Headache",
+        EntryWork: "2017/04/10",
+        ReturnWork: "2017/04/13 9:00",
+        OfficeOpening: "2025/04/13 9:00",
+        OfficeReEntry: "2025/04/13 9:00",
+      },
+      {
+        ID: 1142536,
+        EmployeeName: "John Korner",
         TypeReason: "Sick Leave",
         Reason: "Having bad Headache",
         EntryWork: "2017/04/10",
