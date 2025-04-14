@@ -5,9 +5,9 @@
     "noImplicitAny": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     },
     "typeRoots": ["./node_modules/@types", "./types"]
   },
-  "include": ["src/**/*", "types/**/*"]
+  "include": ["./src/**/*", "types/**/*", "./src/**/*.vue"]
 }

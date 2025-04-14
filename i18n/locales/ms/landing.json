@@ -1,4 +1,11 @@
 {
   "welcome": "Selamat datang ke laman web kami!",
-  "description": "Ini adalah halaman utama."
+  "description": "Ini adalah halaman utama.",
+  "title_table_empId": "Employee ID",
+  "title_table_empName": "Employee Name",
+  "title_table_typeReason": "Type of Reason",
+  "title_table_reason": "Reason",
+  "title_table_dateEntry": "Date & Time of Entry to Work",
+  "title_table_dateReturn": "Return To work Time",
+  "title_table_action": "Action"
 }

@@ -2,10 +2,28 @@ import vue from "eslint-plugin-vue";
 import vueParser from "vue-eslint-parser";
 import unusedImports from "eslint-plugin-unused-imports";
 import tseslint from "@typescript-eslint/eslint-plugin";
+import tseslintType from "typescript-eslint";
 
 export default [
   {
-    ignores: [".nuxt/**/*", "types/devextreme-vue.d.ts"],
+    ignores: [
+      ".nuxt/**/*",
+      "types/devextreme-vue.d.ts",
+      "**/*.d.ts",
+      "nuxt.config.ts",
+      "server-config/**/*",
+    ],
+  },
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parser: tseslintType.parser,
+      parserOptions: {
+        project: "./tsconfig.json",
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
+    },
   },
   {
     files: ["**/*.vue"],
