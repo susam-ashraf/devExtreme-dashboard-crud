@@ -7,5 +7,7 @@
   "title_table_reason": "Reason",
   "title_table_dateEntry": "Date & Time of Entry to Work",
   "title_table_dateReturn": "Return To work Time",
-  "title_table_action": "Action"
+  "title_table_action": "Action",
+  "search_employee_button": "Search",
+  "add_record_button": "Add Record"
 }

@@ -5,9 +5,9 @@
         class="max-w-4xl mx-auto grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-2 mb-10 shadow-xl p-10"
       >
         <div class="mb-5">
-          <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-            >Employee Id</label
-          >
+          <label for="id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">{{
+            $t("title_table_empId")
+          }}</label>
           <input
             type="text"
             v-model="state.search"
@@ -18,9 +18,9 @@
           />
         </div>
         <div class="mb-5">
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-            >Employee Name</label
-          >
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">{{
+            $t("title_table_empName")
+          }}</label>
           <input
             type="text"
             v-model="state.searchName"
@@ -34,7 +34,7 @@
           type="button"
           class="mr-20 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
-          Search
+          {{ $t("search_employee_button") }}
         </button>
       </form>
 
@@ -146,10 +146,15 @@ const filterTableData = computed(() => {
   let filtered: EmployeeDataType[] = state.tableData;
   if (state.search != "") {
     const search = state.search.toLowerCase();
-    // const searchName = state.searchName.toLowerCase();
     filtered = filtered.filter(
       (item: EmployeeDataType) =>
         item.ID.toString().includes(search) || item.EmployeeName.toLowerCase().includes(search)
+    );
+  }
+  if (state.searchName != "") {
+    const searchName = state.searchName.toLowerCase();
+    filtered = filtered.filter((item: EmployeeDataType) =>
+      item.EmployeeName.toLowerCase().includes(searchName)
     );
   }
   return filtered;
